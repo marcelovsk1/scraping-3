@@ -1,22 +1,34 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import asyncio
+from pyppeteer import launch
 from bs4 import BeautifulSoup
 
-url = 'https://ra.co/events/ca/montreal'
+async def main():
+    url = 'https://ra.co/events/ca/montreal'
 
-options = Options()
-options.headless = True
+    browser = await launch(headless=True)
+    page = await browser.newPage()
+    await page.goto(url)
 
-driver = webdriver.Chrome(options=options)
-driver.get(url)
-driver.implicitly_wait(10)
+    # Wait for the page to load (you can adjust the wait time accordingly)
+    await page.waitFor(10000)
 
-page_content = driver.page_source
-webpage = BeautifulSoup(page_content, 'html.parser')
+    page_content = await page.content()
+    webpage = BeautifulSoup(page_content, 'html.parser')
 
-events = webpage.find_all('div', class_='Box-omzyfs-0 guLsXx')
+    print(webpage)
 
-for event in events:
-    print(event)
+    events = webpage.find_all('div', class_='Box-omzyfs-0 guLsXx')
 
-driver.quit()
+    # Rest of your code for processing events
+
+    await browser.close()
+
+# Run the event loop
+asyncio.get_event_loop().run_until_complete(main())
+
+# Rest of your code for processing events
+
+
+# for event in events:
+
+# driver.quit()
