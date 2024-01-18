@@ -18,10 +18,12 @@ events = webpage.find_all('div', class_='sc-fyofxi-0 MDVIb')
 
 for event in events:
     event_name = event.find('span', class_='sc-fyofxi-5 gJmuwa').text
-    event_date_month = event.find('div', class_='sc-1evs0j0-1 gwWuEQ').text.strip()
+    event_month = event.find('div', class_='sc-1evs0j0-1 gwWuEQ').text.strip()
+    event_day = event.find('div', class_='sc-1evs0j0-2 ftHsmv').text.strip()
 
     print(f"{event_name}")
-    print(f"{event_date_month}")
+    print(f"{event_month}")
+    print(f"{event_day}")
     # print(event.text)
 
 driver.quit()
