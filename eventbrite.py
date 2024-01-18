@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-
 page = requests.get('https://www.eventbrite.com/d/canada--montreal/events/')
 webpage = BeautifulSoup(page.content, 'html.parser')
 
