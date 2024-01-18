@@ -17,6 +17,9 @@ webpage = BeautifulSoup(page_content, 'html.parser')
 events = webpage.find_all('div', class_='sc-fyofxi-0 MDVIb')
 
 for event in events:
-    print(event.text)
+    event_name = event.find('span', class_='sc-fyofxi-5 gJmuwa').text
+
+    print(f"{event_name}")
+    # print(event.text)
 
 driver.quit()
