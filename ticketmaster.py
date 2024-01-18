@@ -7,16 +7,16 @@ from selenium.webdriver.chrome.options import Options
 import json
 
 # 1. Pegar Conteúdo HTML a partir da URL
-url = "https://www.ticketmaster.ca/discover/concerts/montreal"
+url = "https://www.ticketmaster.ca/search?sort=date&startDate=2024-01-18&endDate=2024-02-29"
 
 option = Options()
 option.headless = True
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=option)
 
 driver.get(url)
 time.sleep(10)
 
 driver.find_element_by_xpath(
-    '//*[@id="__next"]/div/div[2]/div/div[2]/div/section/div[3]/div/div/div[1]/div[2]/div[3]')
+    '//*[@id="pageInfo"]/div[2]/div/div[2]/div/ul').click()
 
 driver.quit()
