@@ -1,3 +1,4 @@
+import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
@@ -16,16 +17,27 @@ webpage = BeautifulSoup(page_content, 'html.parser')
 
 events = webpage.find_all('div', class_='sc-fyofxi-0 MDVIb')
 
+event_list = []
+
 for event in events:
     event_name = event.find('span', class_='sc-fyofxi-5 gJmuwa').text
     event_month = event.find('div', class_='sc-1evs0j0-1 gwWuEQ').text.strip()
     event_day = event.find('div', class_='sc-1evs0j0-2 ftHsmv').text.strip()
     event_location = event.find('span', class_='sc-fyofxi-7 PpnvD').text.strip()
 
-    print(f"{event_name}")
-    print(f"{event_month}")
-    print(f"{event_day}")
-    print(f"{event_location}")
+    event_info = {
+        'Event Name': event_name,
+        'Event Month': event_month,
+        'Event Day': event_day,
+        'Event Location': event_location
+    }
 
+    event_list.append(event_info)
 
 driver.quit()
+
+# Convert the list of dictionaries to a JSON string
+json_data = json.dumps(event_list, indent=2)
+
+# Print or save the JSON string as needed
+print(json_data)
