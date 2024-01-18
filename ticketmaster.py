@@ -17,8 +17,6 @@ driver.get(url)
 time.sleep(10)
 
 driver.find_element_by_xpath(
-    "//*[@id="__next"]/div/div[2]/div/div[2]/div/section/div[3]/div/div/div[1]/div[2]/div[3]")
-
-
+    '//*[@id="__next"]/div/div[2]/div/div[2]/div/section/div[3]/div/div/div[1]/div[2]/div[3]')
 
 driver.quit()
