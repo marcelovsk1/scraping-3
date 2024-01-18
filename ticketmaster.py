@@ -36,8 +36,6 @@ for event in events:
 
 driver.quit()
 
-# Convert the list of dictionaries to a JSON string
 json_data = json.dumps(event_list, indent=2)
 
-# Print or save the JSON string as needed
 print(json_data)
