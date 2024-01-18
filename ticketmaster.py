@@ -8,3 +8,11 @@ import json
 
 # 1. Pegar Conteúdo HTML a partir da URL
 url = "https://www.ticketmaster.ca/search?q="
+
+option = Options()
+option.headless = True
+driver = webdriver.Chrome(options=option)
+
+driver.get(url)
+
+driver.quit()
