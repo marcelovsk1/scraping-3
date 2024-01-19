@@ -70,11 +70,11 @@ for event in events:
     event_list.append(event_data)
 
 # # Save the data to a JSON file
-# with open('events_data.json', 'w', encoding='utf-8') as json_file:
-#     json.dump(event_list, json_file, ensure_ascii=False, indent=2)
+with open('events_data.json', 'w', encoding='utf-8') as json_file:
+    json.dump(event_list, json_file, ensure_ascii=False, indent=2)
 
 driver.quit()
 
-json_data = json.dumps(event_list, indent=2)
+# json_data = json.dumps(event_list, indent=2)
 
-print(json_data)
+# print(json_data)
