@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
-def scrape_events(url, event_class, event_name_class, event_date_class, event_location_class, image_url_class):
+def scrape_events(url, event, event_name, event_date, event_location, image_url):
     options = Options()
     options.headless = True
 
@@ -19,7 +19,7 @@ def scrape_events(url, event_class, event_name_class, event_date_class, event_lo
     event_list = []
 
     for event in events:
-        event_name_elem = event.find('span', class_=event_name_class)
+        event_name_elem = event.find('span', class_=event_name)
         event_name = event_name_elem.text if event_name_elem else None
 
         event_date_elem = event.find('div', class_=event_date_class)
