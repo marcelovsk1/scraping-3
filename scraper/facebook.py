@@ -1,7 +1,8 @@
 import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup  # Adiciona esta linha
+import time
 
 url = 'https://www.facebook.com/events/explore/montreal-quebec/102184499823699/'
 
@@ -12,8 +13,11 @@ driver = webdriver.Chrome(options=options)
 driver.get(url)
 driver.implicitly_wait(10)
 
+time.sleep(5)
+
 page_content = driver.page_source
 webpage = BeautifulSoup(page_content, 'html.parser')
+
 events = webpage.find_all('div', class_='x78zum5 x1n2onr6 xh8yej3')
 
 event_list = []
