@@ -14,7 +14,7 @@ def scrape_events(url, event, event_name, event_date, event_location, image_url)
     page_content = driver.page_source
     webpage = BeautifulSoup(page_content, 'html.parser')
 
-    events = webpage.find_all('div', class_=event_class)
+    events = webpage.find_all('div', class_=event)
 
     event_list = []
 
@@ -22,13 +22,13 @@ def scrape_events(url, event, event_name, event_date, event_location, image_url)
         event_name_elem = event.find('span', class_=event_name)
         event_name = event_name_elem.text if event_name_elem else None
 
-        event_date_elem = event.find('div', class_=event_date_class)
+        event_date_elem = event.find('div', class_=event_date)
         event_date = event_date_elem.text.strip() if event_date_elem else None
 
-        event_location_elem = event.find('span', class_=event_location_class)
+        event_location_elem = event.find('span', class_=event_location)
         event_location = event_location_elem.text.strip() if event_location_elem else None
 
-        image_elem = event.find('img', class_=image_url_class)
+        image_elem = event.find('img', class_=image_url)
         image_url = image_elem['src'] if image_elem and 'src' in image_elem.attrs else None
 
         event_info = {
@@ -46,11 +46,11 @@ def scrape_events(url, event, event_name, event_date, event_location, image_url)
 
 # URLs
 eventbrite_url = 'https://www.eventbrite.com/d/canada--montreal/events/'
-eventbrite_event_class = 'Stack_root__1ksk7'
-eventbrite_name_class = 'h2'
-eventbrite_date_class = 'p'
-eventbrite_location_class = 'Typography_root__487rx #585163 Typography_body-md__487rx event-card__clamp-line--one Typography_align-match-parent__487rx'
-eventbrite_image_class = 'event-card-link'
+eventbrite_event = 'Stack_root__1ksk7'
+eventbrite_name = 'h2'
+eventbrite_date = 'p'
+eventbrite_location = 'Typography_root__487rx #585163 Typography_body-md__487rx event-card__clamp-line--one Typography_align-match-parent__487rx'
+eventbrite_image = 'event-card-link'
 
 ticketmaster_url = 'https://www.ticketmaster.ca/search?sort=date&startDate=2024-01-18&endDate=2024-02-29'
 ticketmaster_event_class = 'sc-fyofxi-0 MDVIb'
