@@ -44,7 +44,7 @@ def scrape_events(url, event_class, event_name_class, event_date_class, event_lo
 
     return event_list
 
-# URLs e classes específicas para cada site
+# URLs
 eventbrite_url = 'https://www.eventbrite.com/d/canada--montreal/events/'
 eventbrite_event_class = 'Stack_root__1ksk7'
 eventbrite_name_class = 'h2'
@@ -57,7 +57,6 @@ ticketmaster_event_class = 'sc-fyofxi-0 MDVIb'
 ticketmaster_name_class = 'sc-fyofxi-5 gJmuwa'
 ticketmaster_date_class = 'sc-1evs0j0-1 gwWuEQ'
 ticketmaster_location_class = 'sc-fyofxi-7 PpnvD'
-ticketmaster_image_class = None  # Ticketmaster doesn't use an image class in this example
 
 facebook_url = 'https://www.facebook.com/events/explore/montreal-quebec/102184499823699/'
 facebook_event_class = 'x78zum5 x1n2onr6 xh8yej3'
