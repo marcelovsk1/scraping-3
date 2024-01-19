@@ -61,28 +61,23 @@ ticketmaster_image_class = None  # Ticketmaster doesn't use an image class in th
 
 facebook_url = 'https://www.facebook.com/events/explore/montreal-quebec/102184499823699/'
 facebook_event_class = 'x78zum5 x1n2onr6 xh8yej3'
-facebook_name_class = None  # Facebook doesn't use a specific class for event names in this example
-facebook_date_class = None  # Facebook doesn't use a specific class for event dates in this example
-facebook_location_class = None  # Facebook doesn't use a specific class for event locations in this example
 facebook_image_class = 'x1rg5ohu x5yr21d xl1xv1r xh8yej3'
 
-# Scraping dos eventos do Eventbrite
+# Eventbrite
 eventbrite_events = scrape_events(eventbrite_url, eventbrite_event_class, eventbrite_name_class,
                                   eventbrite_date_class, eventbrite_location_class, eventbrite_image_class)
 
-# Scraping dos eventos do Ticketmaster
+# Ticketmaster
 ticketmaster_events = scrape_events(ticketmaster_url, ticketmaster_event_class, ticketmaster_name_class,
                                     ticketmaster_date_class, ticketmaster_location_class, ticketmaster_image_class)
 
-# Scraping dos eventos do Facebook
+# Facebook
 facebook_events = scrape_events(facebook_url, facebook_event_class, facebook_name_class,
                                 facebook_date_class, facebook_location_class, facebook_image_class)
 
-# Unindo as listas de eventos
+# Events List
 all_events = eventbrite_events + ticketmaster_events + facebook_events
 
-# Convertendo a lista de eventos para JSON
 json_data = json.dumps(all_events, indent=2)
 
-# Imprimindo o JSON resultante
 print(json_data)
