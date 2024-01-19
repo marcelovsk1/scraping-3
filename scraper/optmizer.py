@@ -68,10 +68,11 @@ eventbrite_events = scrape_events(eventbrite_url, eventbrite_event_class, eventb
 
 # Ticketmaster
 ticketmaster_events = scrape_events(ticketmaster_url, ticketmaster_event_class, ticketmaster_name_class,
-                                    ticketmaster_date_class, ticketmaster_location_class)
+                                    ticketmaster_date_class, ticketmaster_location_class, image_url_class=None)
 
 # Facebook
-facebook_events = scrape_events(facebook_url, facebook_event_class, facebook_image_class)
+facebook_events = scrape_events(facebook_url, facebook_event_class, event_name_class=None,
+                                event_date_class=None, event_location_class=None, image_url_class=facebook_image_class)
 
 # Events List
 all_events = eventbrite_events + ticketmaster_events + facebook_events
