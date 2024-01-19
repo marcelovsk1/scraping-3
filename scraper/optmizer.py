@@ -53,10 +53,10 @@ eventbrite_location = 'Typography_root__487rx #585163 Typography_body-md__487rx 
 eventbrite_image = 'event-card-link'
 
 ticketmaster_url = 'https://www.ticketmaster.ca/search?sort=date&startDate=2024-01-18&endDate=2024-02-29'
-ticketmaster_event_class = 'sc-fyofxi-0 MDVIb'
-ticketmaster_name_class = 'sc-fyofxi-5 gJmuwa'
-ticketmaster_date_class = 'sc-1evs0j0-1 gwWuEQ'
-ticketmaster_location_class = 'sc-fyofxi-7 PpnvD'
+ticketmaster_event = 'sc-fyofxi-0 MDVIb'
+ticketmaster_name = 'sc-fyofxi-5 gJmuwa'
+ticketmaster_date = 'sc-1evs0j0-1 gwWuEQ'
+ticketmaster_location = 'sc-fyofxi-7 PpnvD'
 
 facebook_url = 'https://www.facebook.com/events/explore/montreal-quebec/102184499823699/'
 facebook_event_class = 'x78zum5 x1n2onr6 xh8yej3'
