@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
-def scrape_events(url, event_class):
+def scrape_events(url, event_class, event_name_class, event_date_class, event_location_class, image_url_class):
     options = Options()
     options.headless = True
 
@@ -19,23 +19,23 @@ def scrape_events(url, event_class):
     event_list = []
 
     for event in events:
-        event_name_elem = event.find('span', class_='sc-fyofxi-5 gJmuwa')
+        event_name_elem = event.find('span', class_=event_name_class)
         event_name = event_name_elem.text if event_name_elem else None
 
-        event_month_elem = event.find('div', class_='sc-1evs0j0-1 gwWuEQ')
-        event_month = event_month_elem.text.strip() if event_month_elem else None
+        event_date_elem = event.find('div', class_=event_date_class)
+        event_date = event_date_elem.text.strip() if event_date_elem else None
 
-        event_day_elem = event.find('div', class_='sc-1evs0j0-2 ftHsmv')
-        event_day = event_day_elem.text.strip() if event_day_elem else None
-
-        event_location_elem = event.find('span', class_='sc-fyofxi-7 PpnvD')
+        event_location_elem = event.find('span', class_=event_location_class)
         event_location = event_location_elem.text.strip() if event_location_elem else None
 
+        image_elem = event.find('img', class_=image_url_class)
+        image_url = image_elem['src'] if image_elem and 'src' in image_elem.attrs else None
+
         event_info = {
-            'Event Name': event_name,
-            'Event Month': event_month,
-            'Event Day': event_day,
-            'Event Location': event_location
+            'Event': event_name,
+            'Date': event_date,
+            'Location': event_location,
+            'Image URL': image_url
         }
 
         event_list.append(event_info)
@@ -44,25 +44,42 @@ def scrape_events(url, event_class):
 
     return event_list
 
-# Rest of your code remains unchanged
-
-
-# URL para o primeiro site
+# URLs e classes específicas para cada site
 eventbrite_url = 'https://www.eventbrite.com/d/canada--montreal/events/'
 eventbrite_event_class = 'Stack_root__1ksk7'
+eventbrite_name_class = 'h2'
+eventbrite_date_class = 'p'
+eventbrite_location_class = 'Typography_root__487rx #585163 Typography_body-md__487rx event-card__clamp-line--one Typography_align-match-parent__487rx'
+eventbrite_image_class = 'event-card-link'
 
-# URL para o segundo site
 ticketmaster_url = 'https://www.ticketmaster.ca/search?sort=date&startDate=2024-01-18&endDate=2024-02-29'
 ticketmaster_event_class = 'sc-fyofxi-0 MDVIb'
+ticketmaster_name_class = 'sc-fyofxi-5 gJmuwa'
+ticketmaster_date_class = 'sc-1evs0j0-1 gwWuEQ'
+ticketmaster_location_class = 'sc-fyofxi-7 PpnvD'
+ticketmaster_image_class = None  # Ticketmaster doesn't use an image class in this example
+
+facebook_url = 'https://www.facebook.com/events/explore/montreal-quebec/102184499823699/'
+facebook_event_class = 'x78zum5 x1n2onr6 xh8yej3'
+facebook_name_class = None  # Facebook doesn't use a specific class for event names in this example
+facebook_date_class = None  # Facebook doesn't use a specific class for event dates in this example
+facebook_location_class = None  # Facebook doesn't use a specific class for event locations in this example
+facebook_image_class = 'x1rg5ohu x5yr21d xl1xv1r xh8yej3'
 
 # Scraping dos eventos do Eventbrite
-eventbrite_events = scrape_events(eventbrite_url, eventbrite_event_class)
+eventbrite_events = scrape_events(eventbrite_url, eventbrite_event_class, eventbrite_name_class,
+                                  eventbrite_date_class, eventbrite_location_class, eventbrite_image_class)
 
 # Scraping dos eventos do Ticketmaster
-ticketmaster_events = scrape_events(ticketmaster_url, ticketmaster_event_class)
+ticketmaster_events = scrape_events(ticketmaster_url, ticketmaster_event_class, ticketmaster_name_class,
+                                    ticketmaster_date_class, ticketmaster_location_class, ticketmaster_image_class)
+
+# Scraping dos eventos do Facebook
+facebook_events = scrape_events(facebook_url, facebook_event_class, facebook_name_class,
+                                facebook_date_class, facebook_location_class, facebook_image_class)
 
 # Unindo as listas de eventos
-all_events = eventbrite_events + ticketmaster_events
+all_events = eventbrite_events + ticketmaster_events + facebook_events
 
 # Convertendo a lista de eventos para JSON
 json_data = json.dumps(all_events, indent=2)
