@@ -59,8 +59,8 @@ ticketmaster_date = 'sc-1evs0j0-1 gwWuEQ'
 ticketmaster_location = 'sc-fyofxi-7 PpnvD'
 
 facebook_url = 'https://www.facebook.com/events/explore/montreal-quebec/102184499823699/'
-facebook_event_class = 'x78zum5 x1n2onr6 xh8yej3'
-facebook_image_class = 'x1rg5ohu x5yr21d xl1xv1r xh8yej3'
+facebook_event = 'x78zum5 x1n2onr6 xh8yej3'
+facebook_image = 'x1rg5ohu x5yr21d xl1xv1r xh8yej3'
 
 # Eventbrite
 eventbrite_events = scrape_events(eventbrite_url, eventbrite_event_class, eventbrite_name_class,
