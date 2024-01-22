@@ -23,11 +23,18 @@ events = webpage.find_all('div', class_='x78zum5 x1n2onr6 xh8yej3')
 event_list = []
 
 for event in events:
+    event_name_elem = event.find('span', class_='x4k7w5x x1h91t0o x1h9r5lt x1jfb8zj xv2umb2 x1beo9mf xaigb6o x12ejxvf x3igimt xarpa2k xedcshv x1lytzrv x1t2pt76 x7ja8zs x1qrby5j')
+    event_name = event_name_elem.text if event_name_elem else None
+
+    event_date_elem = event.find('div', class_='xu06os2 x1ok221b')
+    event_date = event_date_elem.text.strip() if event_date_elem else None
+
     event_image = event.find('img', class_='x1rg5ohu x5yr21d xl1xv1r xh8yej3')
     image_url = event_image['src'] if event_image and 'src' in event_image.attrs else None
 
     event_info = {
-        'Event': event.text,
+        'Event': event_name,
+        'Date': event_date,
         'image_url': image_url
     }
 
