@@ -15,7 +15,7 @@ def scrape_events(url, event_class, event_name_class, event_date_class, event_lo
     driver.implicitly_wait(10)
 
     click_count = 0
-    max_clicks = 5
+    max_clicks = 3
 
     def click_load_more():
         nonlocal click_count
