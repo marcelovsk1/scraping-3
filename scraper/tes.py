@@ -75,7 +75,7 @@ ticketmaster_image = 'event-listing__thumbnail'
 ticketmaster_events = scrape_events(ticketmaster_name, ticketmaster_date)
 
 
-json_data = json.dumps(all_events, indent=2)
+json_data = json.dumps(ticketmaster_events, indent=2)
 
 # Print or save the JSON data as needed
 print(json_data)
