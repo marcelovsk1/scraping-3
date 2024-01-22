@@ -66,8 +66,11 @@ def scrape_events(url, event, event_name, event_date, event_location, image_url)
 
     return event_list
 
+ticketmaster_url = 'https://www.ticketmaster.ca/discover/concerts/montreal'
 ticketmaster_name = 'sc-fFeiMQ bCvzDL text text--dark text--primary sc-6jnhqk-0 kGOLzf event-tile__title'
 ticketmaster_date = 'sc-fFeiMQ dBYlim text text--accent text--accent01 text-tm sc-17ev1tv-0 cnj20n-0 firocR iZsGLV event-tile__date-title'
+ticketmaster_location = 'sc-fFeiMQ iIgzpz text text--dark text--secondary sc-1s3i3gy-0 hbRPym event-tile__sub-title'
+ticketmaster_image = 'event-listing__thumbnail'
 
 ticketmaster_events = scrape_events(ticketmaster_name, ticketmaster_date)
 
