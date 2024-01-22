@@ -65,6 +65,7 @@ def scrape_events(url, event_class, event_name_class, event_date_class, event_lo
 
     return event_list
 
+# TICKETMASTER
 ticketmaster_url = 'https://www.ticketmaster.ca/discover/concerts/montreal'
 ticketmaster_event_class = 'Flex-sc-145abwg-0 bWTqsV accordion__item event-listing__item'
 ticketmaster_name_class = 'sc-fFeiMQ bCvzDL text text--dark text--primary sc-6jnhqk-0 kGOLzf event-tile__title'
@@ -72,12 +73,17 @@ ticketmaster_date_class = 'sc-fFeiMQ dBYlim text text--accent text--accent01 tex
 ticketmaster_location_class = 'sc-fFeiMQ iIgzpz text text--dark text--secondary sc-1s3i3gy-0 hbRPym event-tile__sub-title'
 ticketmaster_image_class = 'event-listing__thumbnail'
 
-# Chame a função com os argumentos corretos
 ticketmaster_events = scrape_events(ticketmaster_url, ticketmaster_event_class, ticketmaster_name_class,
                                     ticketmaster_date_class, ticketmaster_location_class, ticketmaster_image_class)
+# FACEBOOK
+facebook_url = 'https://www.facebook.com/events/explore/montreal-quebec/102184499823699/'
+facebook_event_class = 'x78zum5 x1n2onr6 xh8yej3'
+facebook_image_class = 'x1rg5ohu x5yr21d xl1xv1r xh8yej3'
 
-# Converta a lista de dicionários em uma string JSON formatada
-json_data = json.dumps(ticketmaster_events, indent=2)
+facebook_events = scrape_events(facebook_url, facebook_event_class, facebook_image_class)
+
+# CONVERT TO JSON
+json_data = json.dumps(ticketmaster_events, facebook_events, indent=2)
 
 # Imprima ou salve os dados JSON conforme necessário
 print(json_data)
