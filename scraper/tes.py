@@ -57,3 +57,14 @@ def scrape_events(url, event, event_name, event_date, event_location, image_url)
     driver.quit()
 
     return event_list
+
+ticketmaster_name = 'sc-fFeiMQ bCvzDL text text--dark text--primary sc-6jnhqk-0 kGOLzf event-tile__title'
+ticketmaster_date = 'sc-fFeiMQ dBYlim text text--accent text--accent01 text-tm sc-17ev1tv-0 cnj20n-0 firocR iZsGLV event-tile__date-title'
+
+ticketmaster_events = scrape_events(ticketmaster_name, ticketmaster_date)
+
+
+json_data = json.dumps(all_events, indent=2)
+
+# Print or save the JSON data as needed
+print(json_data)
