@@ -80,7 +80,7 @@ facebook_url = 'https://www.facebook.com/events/explore/montreal-quebec/10218449
 facebook_event_class = 'x78zum5 x1n2onr6 xh8yej3'
 facebook_image_class = 'x1rg5ohu x5yr21d xl1xv1r xh8yej3'
 
-facebook_events = scrape_events(facebook_url, facebook_event_class, facebook_image_class)
+facebook_events = scrape_events(facebook_url, facebook_event_class, None, None, None, facebook_image_class)
 
 # CONVERT TO JSON
 json_data = json.dumps(ticketmaster_events, facebook_events, indent=2)
