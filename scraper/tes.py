@@ -40,18 +40,17 @@ def scrape_events(url, event, event_name, event_date, event_location, image_url)
     event_list = []
 
     for event in events:
-        event_name = event.find('div', class_=event_name)
-        event_name = event_date.text if event_name else None
+        event_name_elem = event.find('div', class_=event_name_class)
+        event_name = event_name_elem.text if event_name_elem else None
 
-        event_date = event.find('div', class_=event_date)
-        event_date = event_date.text.strip() if event_date else None
+        event_date_elem = event.find('div', class_=event_date_class)
+        event_date = event_date_elem.text.strip() if event_date_elem else None
 
-        event_location = event.find('div', class_=event_location)
-        event_location = event_location.text.strip() if event_location else None
+        event_location_elem = event.find('div', class_=event_location_class)
+        event_location = event_location_elem.text.strip() if event_location_elem else None
 
-        image_elem = event.find('img', class_=image_url)
+        image_elem = event.find('img', class_=image_url_class)
         image_url = image_elem['src'] if image_elem and 'src' in image_elem.attrs else None
-
 
         event_info = {
             'Event': event_name,
