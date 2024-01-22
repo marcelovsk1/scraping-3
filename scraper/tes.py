@@ -6,7 +6,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from bs4 import BeautifulSoup
 import time
 
-def scrape_events(url, event, event_name, event_date, event_location, image_url):
+def scrape_events(url, event_class, event_name_class, event_date_class, event_location_class, image_url_class):
     options = Options()
     options.headless = True
 
@@ -66,15 +66,18 @@ def scrape_events(url, event, event_name, event_date, event_location, image_url)
     return event_list
 
 ticketmaster_url = 'https://www.ticketmaster.ca/discover/concerts/montreal'
-ticketmaster_name = 'sc-fFeiMQ bCvzDL text text--dark text--primary sc-6jnhqk-0 kGOLzf event-tile__title'
-ticketmaster_date = 'sc-fFeiMQ dBYlim text text--accent text--accent01 text-tm sc-17ev1tv-0 cnj20n-0 firocR iZsGLV event-tile__date-title'
-ticketmaster_location = 'sc-fFeiMQ iIgzpz text text--dark text--secondary sc-1s3i3gy-0 hbRPym event-tile__sub-title'
-ticketmaster_image = 'event-listing__thumbnail'
+ticketmaster_event_class = 'Flex-sc-145abwg-0 bWTqsV accordion__item event-listing__item'
+ticketmaster_name_class = 'sc-fFeiMQ bCvzDL text text--dark text--primary sc-6jnhqk-0 kGOLzf event-tile__title'
+ticketmaster_date_class = 'sc-fFeiMQ dBYlim text text--accent text--accent01 text-tm sc-17ev1tv-0 cnj20n-0 firocR iZsGLV event-tile__date-title'
+ticketmaster_location_class = 'sc-fFeiMQ iIgzpz text text--dark text--secondary sc-1s3i3gy-0 hbRPym event-tile__sub-title'
+ticketmaster_image_class = 'event-listing__thumbnail'
 
-ticketmaster_events = scrape_events(ticketmaster_name, ticketmaster_date)
+# Chame a função com os argumentos corretos
+ticketmaster_events = scrape_events(ticketmaster_url, ticketmaster_event_class, ticketmaster_name_class,
+                                    ticketmaster_date_class, ticketmaster_location_class, ticketmaster_image_class)
 
-
+# Converta a lista de dicionários em uma string JSON formatada
 json_data = json.dumps(ticketmaster_events, indent=2)
 
-# Print or save the JSON data as needed
+# Imprima ou salve os dados JSON conforme necessário
 print(json_data)
