@@ -83,7 +83,8 @@ facebook_image_class = 'x1rg5ohu x5yr21d xl1xv1r xh8yej3'
 facebook_events = scrape_events(facebook_url, facebook_event_class, None, None, None, facebook_image_class)
 
 # CONVERT TO JSON
-json_data = json.dumps(ticketmaster_events, facebook_events, indent=2)
+all_events = ticketmaster_events + facebook_events
+json_data = json.dumps(all_events, indent=2)
 
 # Imprima ou salve os dados JSON conforme necessário
 print(json_data)
